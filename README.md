@@ -14,3 +14,28 @@ Namaste React Series - Episode 1
 11. Diagnostics and Error Handling
 12. Parcel Gives you also HTTPS 
 13. Tree Shaking - Remove unused Code
+
+
+# Food Ordering App 
+
+/*
+* Header Component
+      Logo
+      Nav Items
+      Cart
+  
+  Body Component
+      Search Bar
+      Container of Restaurants
+        Restaurant Cards
+  
+  Footer Component
+      Social Media Links
+*/
+
+# Export Imports 
+
+/*
+Two Types = > Default and Named
+While importing Named exports it is necessary to use {} curly braces
+while importing

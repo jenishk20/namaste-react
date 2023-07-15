@@ -1,57 +1,3 @@
-/*
-*
-*<div id="parent">
-*    <div id="child">
-*        <h1 id="heading">Hello World from React</h1> 
-         <h2 id="heading">Hello World from React</h1>      
-    </div>
-    <div id="child2">
-*        <h1 id="heading">Hello World from React</h1> 
-         <h2 id="heading">Hello World from React</h1>      
-    </div>
-*</div>
-*
-*
-*
-*/
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/*
-* Header Component
-      Logo
-      Nav Items
-      Cart
-  
-  Body Component
-      Search Bar
-      Container of Restaurants
-        Restaurant Cards
-  
-  Footer Component
-      Social Media Links
-*/
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-const Header = () => (
-  <div className="header">
-    <div className="logo-container">
-      <img
-        className="logo"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9BPnrca1z_lTwom8TaRkY3mmRp5Z9VoJlXw&usqp=CAU"
-      />
-    </div>
-    <div className="nav-items">
-      <ul>
-        <li>Home</li>
-        <li>Menu</li>
-        <li>Contact us</li>
-        <li>Cart</li>
-      </ul>
-    </div>
-  </div>
-);
 const resObj = 
   [
     {
@@ -1689,48 +1635,6 @@ const resObj =
     }
 
 ]
-const RestaurantCard = (props) => {
 
-  const resData = props.resData;
-  console.log(resData);
-  url = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + resData.data.cloudinaryImageId
-  // console.log(url)
 
-  const {cloudinaryImageId,name,cuisines,avgRating,costForTwo,deliveryTime}= 
-  resData?.data;
-
-  return (
-  <div className="res-card">
-    
-    <img
-      className="res-image"
-      src={url}
-    ></img>
-    <h3>{name}</h3>
-    <h3>{cuisines.join(",")}</h3>
-    <h3>{avgRating} Stars</h3>
-    <h3>Rs {costForTwo/100} for two </h3>
-    <h3>{deliveryTime} Minutes</h3>
-  </div>
-)};
-const Body = () => (
-  <div className="body">
-    <div className="search">Search</div>
-    <div className="res-container">
-      {
-        resObj.map(restaurant=>(
-          <RestaurantCard resData = {restaurant}/>
-        ))
-      }
-      
-    </div>
-  </div>
-);
-const AppLayout = () => (
-  <div className="App">
-    <Header />
-    <Body />
-  </div>
-);
-
-root.render(<AppLayout />);
+export default resObj;
