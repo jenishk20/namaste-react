@@ -1,12 +1,11 @@
 import RestaurantCard from "./RestaurantCard";
-import resObj from "../../utils/mockData";
 import { useState, useEffect } from "react";
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState(resObj);
-  const [filteredRestaurants,setFilteredRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  
   useEffect(() => {
     fetchAPIData();
   }, []);
@@ -16,12 +15,12 @@ const Body = () => {
       const data = await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5538241&lng=73.9476689&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
-
       const json = await data.json();
-      console.log("Json File", json);
-      const formattedData = json.data.cards[2].data.data.cards;
+      const formattedData =
+        json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
       console.log(formattedData);
-      setRestaurants(data);
+      setRestaurants(formattedData)
+     
     } catch {
       console.log("Some Error Occured");
     }
@@ -46,7 +45,9 @@ const Body = () => {
             onClick={() => {
               if (searchText !== "") {
                 const filteredData = restaurants.filter((elem) =>
-                  elem.data.name.toLowerCase().includes(searchText.toLowerCase())
+                  elem.data.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase())
                 );
                 setRestaurants(filteredData);
               }
@@ -69,7 +70,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {restaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+          <RestaurantCard  resData={restaurant} />
         ))}
       </div>
     </div>
